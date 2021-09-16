@@ -1,0 +1,62 @@
+﻿@page
+@model JurseyBazar.Pages.JurseyList.CreateModel
+@{
+}
+
+<br />
+<h2 class="text-info">Create Jursey</h2>
+<br />
+
+<div class="border container" style="padding:30px;">
+    <form method="post">
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Jursey.Name"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Jursey.Name"  class="form-control" />
+            </div>
+            <span class="text-danger" asp-validation-for="Jursey.Name"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Jursey.TeamsName"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Jursey.TeamsName" class="form-control" />
+            </div>
+            <span class="text-danger" asp-validation-for="Jursey.TeamsName"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Jursey.Price"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Jursey.Price" class="form-control" />
+            </div>
+            <span class="text-danger" asp-validation-for="Jursey.Price"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Jursey.Quantity"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Jursey.Quantity" class="form-control">
+            </div>
+            <span class="text-danger" asp-validation-for="Jursey.Quantity"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-3 offset-3">
+                <input type="submit" value="Create" class="btn btn-primary form-control" />
+            </div>
+            <div class="col-3">
+                <a asp-page= "Index" value="Create"  class="btn btn-success form-control">Back List</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section scripts{
+ <partial name="_ValidationScriptsPartial"/>
+}

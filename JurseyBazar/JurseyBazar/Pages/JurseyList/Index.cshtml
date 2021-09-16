@@ -1,0 +1,93 @@
+﻿@page
+@model JurseyBazar.Pages.JurseyList.IndexModel
+@{
+}
+
+<br>
+<div class="container row m-0 p-0">
+    <div class="col-6">
+        <h2 class="text-info">Jursey List</h2>
+    </div>
+    <div class="col-3">
+        <a asp-page="Create" class="btn btn-info form-control text-white">Create New Jursey</a>
+    </div>
+    <div class="col-3">
+        <a asp-page="Create" class="btn btn-info form-control text-white">Add(Upsert) New Jursey</a>
+    </div>
+    <div class="col-12 mt-3 p-3 border">
+        <form method="post">
+            @if (@Model.Jurseys.Count() > 0)
+            {
+
+                <table class="table table-striped border">
+                    <tr class="table-secondary">
+                        <th>
+                            <label asp-for="Jurseys.FirstOrDefault().Name"></label>
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(j => j.Jurseys.FirstOrDefault().TeamsName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(j => j.Jurseys.FirstOrDefault().Price)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(j => j.Jurseys.FirstOrDefault().Quantity)
+                        </th>
+                        <th>
+
+                        </th>
+                    </tr>
+                    @foreach (var item in Model.Jurseys)
+                    {
+
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(j => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(j => item.TeamsName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(j => item.Price)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(j => item.Quantity)
+                            </td>
+                            <td>
+                                <a asp-page="Edit" asp-route-id="@item.Id" class="btn btn-success btn-sm">Edit</a>
+                                <button asp-page-handler="Delete" asp-route-id="@item.Id" onclick="return confirm('Are You Sure You want to Delete?')" class="btn btn-danger btn-sm">Delete</button>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            }
+            else
+            {
+                <p>No Jurseys are Available</p>
+            }
+        </form>
+    </div>
+
+    <div class="col-12 text-center">
+        <br />
+        <span class="h3 text-info">OR</span>
+        <br />
+        <br />
+    </div>
+    <div class="col-12 p-3 border">
+        <table id="DT_load" class="table table-striped table-bordered" style="width:100%;">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>TeamsName</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th></th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+@section scripts{ 
+<script src="~/js/jurseyList.js"></script>
+}
